@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.useroauth'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+processResources {
+	dependsOn 'copyFrontendToBuild'
+}
+
+bootJar{
+	archiveFileName = "app.jar"
+}
+
+task copyFrontendToBuild(type: Copy) {
+	dependsOn 'npmBuild'
+	from "$projectDir/src/frontend/useroauth/dist/"
+	into "$buildDir/resources/main/static"
+}
+
+task npmBuild(type: Exec) {
+	workingDir './src/frontend/useroauth/'
+	commandLine 'npm', 'run', 'build'
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.h2database:h2'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'javax.validation:validation-api:2.0.0.Final'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+//test {
+//	useJUnitPlatform()
+//}
