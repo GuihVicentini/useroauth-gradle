@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**", "/css/**", "/index", "h2-console/**", "/").permitAll()
-                .antMatchers("/api/test/**").permitAll();
+                .antMatchers("/api/test/**").permitAll().and().oauth2Login().permitAll();
 //                .anyRequest().authenticated(); //was blocking index.html
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

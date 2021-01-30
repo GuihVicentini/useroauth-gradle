@@ -30,6 +30,11 @@
             <font-awesome-icon icon="sign-in-alt" />Login
           </router-link>
         </li>
+        <li class="nav-item">
+          <a href="/oauth2/authorization/github" class="nav-link">
+            <font-awesome-icon icon="sign-in-alt" />Login GitHub
+          </a>
+        </li>
       </div>
 
       <div v-if="currentUser" class="navbar-nav ml-auto">
@@ -73,7 +78,8 @@ export default {
       }
 
       return false;
-    }
+    },
+
   },
   methods: {
     logOut() {
