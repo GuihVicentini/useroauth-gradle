@@ -10,6 +10,11 @@
           >
             Hi {{ currentUser.username }}!
           </v-list-item-title>
+          <v-list-item-title class="title"
+           v-else
+          >
+            Welcome to Shiftly!
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -78,7 +83,9 @@
       </v-btn>
 
       <template v-slot:extension>
-        <v-tabs align-with-title>
+        <v-tabs 
+          v-if="currentUser"
+          align-with-title>
           <v-tab to="/user">Work Calendar</v-tab>
           <v-tab to="/wishes">Wishes</v-tab>
         </v-tabs>
