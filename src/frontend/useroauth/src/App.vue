@@ -105,6 +105,7 @@ export default {
       drawer: null,
       items: [
           { title: 'Home', icon: 'mdi-home-variant-outline', to: '/' },
+          { title: 'Group', icon: 'mdi-account-group', to: '/group'},
           { title: 'Profile', icon: 'mdi-account', to: '/profile'},
         ], }),
   computed: {

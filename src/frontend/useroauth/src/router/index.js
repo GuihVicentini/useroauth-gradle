@@ -33,6 +33,11 @@ export const router = new Router({
       component: () => import('../views/Profile.vue')
     },
     {
+      path: '/group',
+      name: 'group',
+      component: () => import('../views/Group.vue')
+    },
+    {
       path: '/admin',
       name: 'admin',
       // lazy-loaded
